@@ -39,18 +39,21 @@ app.get('/api/zipcheck/:zipcode', function(req, res) {
 	//submission to method
 	API.zipCheck([zipcode]).then(function(response) {
 
+		console.log('found successfully', response);
+
 		//returning response
-		res.send({
-			city: response.city,
-			state: response.state
-		});
+		/*res.send({
+			city: response.zipCode.city,
+			state: response.zipCode.state
+		});*/
+		res.send(response);
 
 	}).catch(function(error) {
 
+		console.log('error finding');
+
 		//returning error
-		res.send({
-			error: error
-		});
+		res.send(error);
 
 	});
 

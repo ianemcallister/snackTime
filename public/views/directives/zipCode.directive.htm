@@ -1,7 +1,11 @@
 <div>
 
 	<label for="zipcode">Zip:
-		<input type="numbers" id='zipcode' placeholder="01234">
+		<input 	type="numbers" 
+				id='zipcode' 
+				placeholder="01234"
+				model='vm.zipcode'
+				ng-blur='vm.cityStateLookup(vm.zipcode)'>
 	</label>
 
 </div>

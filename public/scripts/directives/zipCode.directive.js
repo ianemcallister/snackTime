@@ -26,10 +26,20 @@ function zipCode() {
 	function linkFunc(scope, el, attr, ctrl) {
     }
 
-    zipCodeController.$inject = ['$scope', '$log'];
+    zipCodeController.$inject = ['$scope', '$log', 'server'];
     /* @ngInject */
-    function zipCodeController($scope, $log) {
+    function zipCodeController($scope, $log, server) {
 	    var vm = this;
+
+	    vm.cityStateLookup = function(zipcode) {
+		    
+		    server.cityStateLookup(zipcode).then(function(response) {
+		    	$log.info('got this response', response);
+		    }).catch(function(error) {
+		    	$log.info('got this error', error);
+		    });
+		    
+	    }
 
 	}
 

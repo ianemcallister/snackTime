@@ -1,5 +1,5 @@
 angular
-    .module('ahNutsWebApp')
+    .module('trumpsNuts')
     .service('server', server);
 
 server.$inject = ['$log', '$http'];
@@ -12,7 +12,17 @@ function server($log, $http) {
 	backend._get = function(url) {
 
 		return new Promise(function(resolve, reject) {
-			resolve('good test');
+
+			$http.get(url).then(function(response) {
+
+				resolve(response.data);
+
+			}, function theErrors(error) {
+
+				reject(error);
+
+			});
+
 		});
 
 	}
@@ -22,7 +32,28 @@ function server($log, $http) {
 
 	//receives a zipcode, returns a city and state
 	backend.cityStateLookup = function(zipcode) {
-		
+
+		//build the new url
+		var url = '/api/zipcheck/' + zipcode;
+
+		//return the promise
+		return new Promise(function(resolve, reject) {
+
+			//initiate the request
+			backend._get(url).then(function(response) {
+
+				//return a good response
+				resolve(response);
+
+			}).catch(function(error) {
+
+				//return an error response
+				reject(error);
+				
+			});
+
+		});
+
 	}
 
 }
