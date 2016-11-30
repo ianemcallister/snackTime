@@ -15,7 +15,9 @@ function lastName() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/lastName.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			last: '='
+		},
 		link: linkFunc,
 		controller: lastNameController,
 		controllerAs: 'vm',

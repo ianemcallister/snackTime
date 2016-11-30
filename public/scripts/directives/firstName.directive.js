@@ -15,7 +15,9 @@ function firstName() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/firstName.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			first: '='
+		},
 		link: linkFunc,
 		controller: firstNameController,
 		controllerAs: 'vm',

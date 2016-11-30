@@ -15,7 +15,10 @@ function contactInfo() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/contactInfo.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			name: '=',
+			email: '='
+		},
 		link: linkFunc,
 		controller: contactInfoController,
 		controllerAs: 'vm',

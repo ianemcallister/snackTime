@@ -15,7 +15,9 @@ function yourName() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/yourName.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			name: '='
+		},
 		link: linkFunc,
 		controller: yourNameController,
 		controllerAs: 'vm',
