@@ -1,10 +1,21 @@
 <div>
 
-	<label for="firstNameInput">
-		First:
-		<input 	type="text" 
-				id='firstNameInput' 
-				ng-model='vm.first'>
-	</label>
+	<div 	class="form-group" 
+			ng-class='' 
+			ng-style=''>
+		
+		<label for="firstNameInput" class='form-control-label'>
+			First:
+			<input 	type="text" 
+					id='firstNameInput' 
+					ng-model='vm.first'
+					ng-class='vm.state.firstNameInput.classes'
+					ng-style='vm.state.firstNameInput.style'
+					ng-keyup="vm.validate('first', vm.first)">
+		</label>
+
+
+
+	</div>
 
 </div>

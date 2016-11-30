@@ -28,11 +28,31 @@ function firstName() {
 	function linkFunc(scope, el, attr, ctrl) {
     }
 
-    firstNameController.$inject = ['$scope', '$log'];
+    firstNameController.$inject = ['$scope', '$log', 'state'];
     /* @ngInject */
-    function firstNameController($scope, $log) {
+    function firstNameController($scope, $log, state) {
 	    var vm = this;
 
+	    $log.info(state);
+
+	    vm.state = {
+	    	inputContainer: {
+	    		classes: state.classes,
+	    		style: state.styles
+	    	},
+	    	firstNameInput: {
+	    		model: state.model.input.state,
+	    		classes: state.classes,
+	    		style: state.syles
+	    	}
+	    }
+
+	    //view model methods
+	    vm.validate = function(field, value) {
+	    	
+	    	if(value.length > 1) state.changeState.inputSuccess()
+
+	    }
 	}
 
 	return  directive;

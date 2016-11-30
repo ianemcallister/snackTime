@@ -8,6 +8,21 @@ state.$inject = ['$log'];
 function state($log) {
 
 	var stateObject = {
+		model: {
+			allElementsCompleted: false,
+			fields: [],
+			input: {
+				prop: {
+					name: '',
+					requirnments: []
+				},
+				state: {
+					addressed: false,
+					success: false,
+					failure: false
+				}
+			}
+		},
 		classes: {
 			'form-group': false,
 			'has-success': false,
@@ -22,10 +37,17 @@ function state($log) {
 			'form-text': false,
 			'text-muted': false
 		},
-		style: {
+		styles: {
 
+		},
+		changeState: {
+			inputSuccess: '',
+			inputFailed: ''
 		}
 	}
+
+	function inputSuccess() {}
+	function inputFailed() {}
 
 	return stateObject;
 }
