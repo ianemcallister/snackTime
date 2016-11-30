@@ -14,12 +14,15 @@ function dataModel($log) {
 		},
 		email: '',
 		shipping: {
-			street1: '',
-			street2: '',
-			street3: '',
-			city: '',
-			state: '',
-			zip: ''
+			address: {
+				street1: '',
+				street2: '',
+				street3: '',
+				city: '',
+				state: '',
+				zip: ''
+			}, 
+			requirnments: {}
 		},
 		billing: {
 			address: {
@@ -30,7 +33,7 @@ function dataModel($log) {
 				state: '',
 				zip: ''
 			},
-			card: {
+			payment: {
 				number: ['', '', '', ''],
 				exp: ['', ''],
 				csv: ''

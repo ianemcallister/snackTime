@@ -13,17 +13,21 @@
 
 		</div>
 
+		{{vm.model}}
+
 		<contact-info name='vm.model.name' email='vm.model.email'>	
 		</contact-info>
 
-		<shipping-info>
+		<shipping-info address='vm.model.shipping.address' requirnments='vm.model.shipping.requirnments'>
 		</shipping-info>
 
-		<billing-info>
+		<billing-info address='vm.model.billing' payment='vm.model.payment'>
 		</billing-info>
 
-		<purchase-btn>
+		<purchase-btn submit-form='vm.submitForm'>
 		</purchase-btn>
+
+
 
 	</div>
 	

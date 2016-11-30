@@ -15,7 +15,9 @@ function emailAddress() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/emailAddress.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			email: '='
+		},
 		link: linkFunc,
 		controller: emailAddressController,
 		controllerAs: 'vm',

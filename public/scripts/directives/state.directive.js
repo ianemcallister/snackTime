@@ -15,7 +15,9 @@ function state() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/state.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			stateId: '='
+		},
 		link: linkFunc,
 		controller: stateController,
 		controllerAs: 'vm',

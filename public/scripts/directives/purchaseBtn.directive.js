@@ -15,7 +15,9 @@ function purchaseBtn() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/purchaseBtn.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			submitForm: '&'
+		},
 		link: linkFunc,
 		controller: purchaseBtnController,
 		controllerAs: 'vm',

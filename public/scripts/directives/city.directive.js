@@ -15,7 +15,9 @@ function city() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/city.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			cityName: '='
+		},
 		link: linkFunc,
 		controller: cityController,
 		controllerAs: 'vm',

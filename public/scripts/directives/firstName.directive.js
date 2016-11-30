@@ -28,29 +28,28 @@ function firstName() {
 	function linkFunc(scope, el, attr, ctrl) {
     }
 
-    firstNameController.$inject = ['$scope', '$log', 'state'];
+    firstNameController.$inject = ['$scope', '$log', 'stateData'];
     /* @ngInject */
-    function firstNameController($scope, $log, state) {
+    function firstNameController($scope, $log, stateData) {
 	    var vm = this;
 
-	    $log.info(state);
+	    //$log.info(state);
 
 	    vm.state = {
-	    	inputContainer: {
-	    		classes: state.classes,
-	    		style: state.styles
-	    	},
-	    	firstNameInput: {
-	    		model: state.model.input.state,
-	    		classes: state.classes,
-	    		style: state.syles
+		    container: {
+		    	classes: stateData.initClasses('container'),
+		    	styles: stateData.initStyles('container')	    		
+	    	}, 
+	    	input: {
+		    	classes: stateData.initClasses('input'),
+		    	styles: stateData.initStyles('container')
 	    	}
 	    }
 
 	    //view model methods
 	    vm.validate = function(field, value) {
 	    	
-	    	if(value.length > 1) state.changeState.inputSuccess()
+	    	//if(value.length > 1) state.changeState.inputSuccess()
 
 	    }
 	}

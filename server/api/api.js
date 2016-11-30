@@ -11,7 +11,8 @@ var usps = require('usps-web-tools-node-sdk');
 var api = {
 	_get:_get,
 	init:init,
-	zipCheck: zipCheck
+	zipCheck: zipCheck, 
+	processOrder: processOrder
 };
 
 function init() {
@@ -63,6 +64,27 @@ function zipCheck(zipcodes) {
 			}
 		);
 
+	});
+
+}
+
+function processOrder(data) {
+
+	console.log('processing the order', data);
+
+	//return a promise
+	return new Promise(function(resolve, reject) {
+
+		//check for errors
+
+		//process payment
+
+		//mail request to Ah-Nuts
+
+		//mail receipt to customer
+
+		//return success message
+		resolve({'good': 'everything worked'});
 	});
 
 }

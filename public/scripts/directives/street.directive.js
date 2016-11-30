@@ -15,7 +15,9 @@ function street() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/street.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			streetAddress: '='
+		},
 		link: linkFunc,
 		controller: streetController,
 		controllerAs: 'vm',

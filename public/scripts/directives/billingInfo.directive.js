@@ -15,7 +15,10 @@ function billingInfo() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/billingInfo.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			address: '=',
+			payment: '='
+		},
 		link: linkFunc,
 		controller: billingInfoController,
 		controllerAs: 'vm',

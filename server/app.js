@@ -60,23 +60,35 @@ app.get('/api/zipcheck/:zipcode', function(req, res) {
 });
 
 //receives shipping to and from, returns shipping options
-app.get('/api/shipping/', function(req, res) {
+app.get('/api/shipping', function(req, res) {
 
 	//messaging 
 
 });
 
 //receives payment request, returns success or failure confirmation
-app.post('/api/payment/', function(req, res) {
+app.post('/api/payment', function(req, res) {
 
 	//messaging 
 
 });
 
 //receives order details, returns submission success or failure confirmation
-app.post('/api/order/', function(req, res) {
+app.post('/api/order', function(req, res) {
 
-	//messaging 
+	//send package to the API 
+	API.processOrder(req.body).then(function(response) {
+
+		//if everything worked send a positive response
+		res.send(response);
+
+	}).catch(function(error) {
+
+		//if there was an error, notify the user
+		res.send(error);
+
+	});
+	
 
 });
 

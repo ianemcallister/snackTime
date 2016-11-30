@@ -15,7 +15,10 @@ function shippingInfo() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/shippingInfo.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			address: '=',
+			requirnments: '='
+		},
 		link: linkFunc,
 		controller: shippingInfoController,
 		controllerAs: 'vm',
@@ -30,6 +33,8 @@ function shippingInfo() {
     /* @ngInject */
     function shippingInfoController($scope, $log) {
 	    var vm = this;
+
+	    $log.info(vm.address);
 
 	}
 
