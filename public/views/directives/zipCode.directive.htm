@@ -1,24 +1,14 @@
 <div>
 
-	<div 	class="form-group"
-			ng-class='vm.state.container.classes'>
-
-		<label 	for="zipcode{{vm.uniqueId}}"
-				class="form-control-label"> Zip:
-
-			<input 	type="numbers" 
-					id='zipcode{{vm.uniqueId}}' 
-					placeholder="01234"
-					class='form-control'
-					ng-class='vm.state.input.classes'
-					ng-style=''
-					ng-model='vm.zip'
-					ng-keyup="vm.validate(vm.zipcode)"
-					ng-blur='vm.submit(vm.zipcode)'
-					>
-
-		</label>
-
-	</div>
+	<input 	type="numbers" 
+			id='zipcode{{vm.uniqueId}}' 
+			placeholder="01234"
+			class='form-control'
+			ng-class='vm.state.input.classes'
+			ng-style=''
+			ng-model='vm.zip'
+			ng-keyup="vm.validate(vm.zipcode)"
+			ng-blur='vm.submit(vm.zipcode)'
+			>
 
 </div>

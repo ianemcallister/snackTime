@@ -1,12 +1,37 @@
 <div>
 	
 	<!--heading-->
-	<h3 class="center">Contact</h3>
+	<div class="row">
+		<h3 class="center">1. Contact</h3>
+	</div>
 
-	<!--Name-->
-	<your-name name='vm.name'></your-name>
-	
-	<!--email-->
-	<email-address email='vm.email'></email-address>
+	<!--Contact Info-->
+	<div class="row form-group">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<first-name first='vm.name.first'></first-name>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<last-name last='vm.name.last'></last-name>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<label for="firstNameInput" class='form-control-label'>First</label>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<label for="lastNameInput" class='form-control-label'>Last</label>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<email-address email='vm.email'></email-address>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<label for="emailInput" class='form-control-label'>E-mail</label>
+		</div>
+		<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
+			<!--Name-->
+			<!--<your-name name='vm.name'></your-name>-->
+		
+			<!--email-->
+			<!--<email-address email='vm.email'></email-address>-->
+		<!--</div>-->
+	</div>
 
 </div>

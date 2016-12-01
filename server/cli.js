@@ -12,7 +12,7 @@ API.init();
 });*/
 
 API.processOrder({
-
+	email: 'ian@ah-nuts.com'
 }).then(function(response) {
 
 	console.log(response);

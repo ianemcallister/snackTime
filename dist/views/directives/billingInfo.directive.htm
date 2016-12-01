@@ -1,6 +1,8 @@
 <div>
 	<!--Header-->
-	<h3 class="center">Billing</h3>
+	<div class="row">
+		<h3 class="center">3. Billing</h3>
+	</div>
 
 	<label for="sameAsBillingCheck">
 		<input 	type="checkbox" 
@@ -9,17 +11,35 @@
 				ng-click='vm.toggleAddressCopy(vm.copyShippingAddress)'> Same as billing?
 	</label>
 
-	<zip-code zip='vm.address.zip'></zip-code>
+	<div class="row form-group">
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<zip-code unique-id='2' zip='vm.address.zip'></zip-code>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<city city-name='vm.address.city'></city>
+		</div>
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+			<state state-id='vm.address.state'></state>
+		</div>
+		<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+			<label for="zipcode2" class="form-control-label">Zip</label>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+			<label for="city" class="form-control-label">City</label>
+		</div>
+		<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+			<label for="state" class="form-control-label">State</label>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<street street-address='vm.address.street1'></street>
+			<street street-address='vm.address.street2'></street>
+			<street street-address='vm.address.street3'></street>
+		</div>
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<label for="street2" class="form-control-label">Street</label>
+		</div>
+	
+	</div>
 
-	<city city-name='vm.address.city'></city>
-
-	<state state-id='vm.address.state'></state>
-
-	<street street-address='vm.address.street1'></street>
-
-	<street street-address='vm.address.street2'></street>
-
-	<street street-address='vm.address.street3'></street>
-
-	<cc-capture></cc-capture>
+	<!--<cc-capture></cc-capture>-->
 </div>

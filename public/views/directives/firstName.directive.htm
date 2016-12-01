@@ -1,22 +1,12 @@
 <div>
 
-	<div 	class="form-group" 
-			ng-class='' 
-			ng-style=''>
-		
-		<label for="firstNameInput" class='form-control-label'>
-			First:
-			<input 	type="text" 
-					id='firstNameInput' 
-					ng-model='vm.first'
-					ng-class='vm.state.firstNameInput.classes'
-					ng-style='vm.state.firstNameInput.style'
-					ng-keyup="vm.validate('first', vm.first)"
-					autocomplete='name.first'>
-		</label>
-
-
-
-	</div>
-
+	<input 	type="text" 
+			id='firstNameInput'
+			class='form-control col-xs-12 col-sm-12 col-md-12 col-lg-12' 
+			ng-model='vm.first'
+			ng-class='vm.state.firstNameInput.classes'
+			ng-style='vm.state.firstNameInput.style'
+			ng-keyup="vm.validate('first', vm.first)"
+			autocomplete='name.first'>
+			
 </div>

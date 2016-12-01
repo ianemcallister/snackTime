@@ -4,7 +4,8 @@ var nodemailer = require('nodemailer');
 
 var mailCenter = {
 	init:init,
-	sendOrder:sendOrder
+	sendOrder:sendOrder,
+	sendReceipt: sendReceipt
 };
 
 //local variables
@@ -16,7 +17,11 @@ var MAIL = {
 	smtpConfig: {},
 	transporter: {},
 	mailOptions: {}
-}
+};
+var BODY = {
+	text: 'Confirmation: Your Order Was Received',
+	htmlText: "<h2>Confirmation</h2><p>Your Order Was received</p>"
+};
 
 //private methods
 
@@ -46,31 +51,62 @@ function init() {
 
 function sendOrder(data) {
 
-	//TODO: REMOVE THIS LATER
-	var body = JSON.stringify({'body test':'does this work?'}, null, 4)
-
-	console.log(body);
-
+	//mailing to admin for fullfillment
 	MAIL.mailOptions = {
-		from: 'ian@ah-nuts.com', // sender address
-		to: 'ian@ah-nuts.com', //'data.email', // list of receivers
-		subject: 'Order Confirmation', // Subject line
-		text: 'testing'//.plainText, // plaintext body
-		//html: body.htmlText // html body
+		from: data.email, // sender address
+		to: 'ian@ah-nuts.com', //data.email, // list of receivers
+		subject: 'Order Placed', // Subject line
+		text: BODY.text, //.plainText, // plaintext body
+		html: BODY.htmlText // html body
 	};
 
 	//return a promise
 	return new Promise(function(resolve, reject) {
 
-		var transporter = nodemailer.createTransport(MAIL.smtpConfig);
-
-		console.log(transporter._options);
-
-		transporter.sendMail(MAIL.mailOptions, function(error, info){
+		MAIL.transporter.sendMail(MAIL.mailOptions, function(error, info){
+		    
 		    if(error){
-		        console.log('error', error);
+		    	//If there was an error, tell us about it and reject
+		    	console.log('error:', error);
+		        reject(error);
+		    } else {
+		    	//otherwise, give us info about the success
+		    	console.log('info:', info);
+		    	resolve(info);
 		    }
-		    console.log('Message sent: ' + info.response);
+
+		});
+
+	});
+
+}
+
+function sendReceipt(data) {
+
+	//mailing to admin for fullfillment
+	MAIL.mailOptions = {
+		from: 'ian@ah-nuts.com', // sender address
+		to: data.email, //data.email, // list of receivers
+		subject: 'Order Confirmation', // Subject line
+		text: BODY.text, //.plainText, // plaintext body
+		html: BODY.htmlText // html body
+	};
+
+	//return a promise
+	return new Promise(function(resolve, reject) {
+
+		MAIL.transporter.sendMail(MAIL.mailOptions, function(error, info){
+		    
+		    if(error){
+		    	//If there was an error, tell us about it and reject
+		    	console.log('error:', error);
+		        reject(error);
+		    } else {
+		    	//otherwise, give us info about the success
+		    	console.log('info:', info);
+		    	resolve(info);
+		    }
+
 		});
 
 	});

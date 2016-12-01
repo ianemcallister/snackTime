@@ -4,6 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var fetch = require('node-fetch');
 var usps = require('usps-web-tools-node-sdk');
+var square = require('./square');
 var mailcenter = require('./mailcenter');
 
 //TODO: REMOVE THIS LATER
@@ -76,30 +77,44 @@ function processOrder(data) {
 
 	//console.log('processing the order', data);
 
-	data = {'testin':'go'};
+	//data = {'testin':'go'};
 
 	//return a promise
 	return new Promise(function(resolve, reject) {
 
 		//check for errors
 
-		//process payment
+		//1. process payment
+		square.runCC(data).then(function(response) {
 
-		//mail request to Ah-Nuts
-		mailcenter.sendOrder(data).then(function(response) {
+			//2. mail request to Ah-Nuts
+			mailcenter.sendOrder(data).then(function(response) {
 
-			resolve(response);
+				//3. if everything worked mail receipt to customer
+				mailcenter.sendReceipt(data).then(function(response) {
 
+					//return success message
+					resolve({'good': 'everything worked'});
+
+				//.3 catch
+				}).catch(function(error) {
+
+					reject(error);
+
+				});
+
+			//2. catch
+			}).catch(function(error) {
+
+				reject(error);
+
+			});
+
+		//1. catch
 		}).catch(function(error) {
 
-			reject(error);
-			
 		});
-
-		//mail receipt to customer
-
-		//return success message
-		resolve({'good': 'everything worked'});
+		
 	});
 
 }
