@@ -17,7 +17,9 @@ function billingInfo() {
 		replace: true,
 		scope: {
 			address: '=',
-			payment: '='
+			payment: '=',
+			copyShippingAddress: '=',
+			copyShipping: '&'
 		},
 		link: linkFunc,
 		controller: billingInfoController,
@@ -34,6 +36,12 @@ function billingInfo() {
     function billingInfoController($scope, $log) {
 	    var vm = this;
 
+	    //view model methods
+	    vm.toggleAddressCopy = function(btnState) {
+
+	    	vm.copyShipping()(btnState);
+
+	    }
 	}
 
 	return  directive;

@@ -13,6 +13,7 @@ function dataModel($log) {
 			last: ''
 		},
 		email: '',
+		copyShippingAddress: true,
 		shipping: {
 			address: {
 				street1: '',

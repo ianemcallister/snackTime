@@ -13,15 +13,22 @@
 
 		</div>
 
-		{{vm.model}}
-
 		<contact-info name='vm.model.name' email='vm.model.email'>	
 		</contact-info>
+		
+		{{vm.model.shipping}}
 
-		<shipping-info address='vm.model.shipping.address' requirnments='vm.model.shipping.requirnments'>
+		<shipping-info 	address='vm.model.shipping.address' 
+						requirnments='vm.model.shipping.requirnments'>
 		</shipping-info>
+		
+		{{vm.model.copyShippingAddress}}
+		{{vm.model.billing}}
 
-		<billing-info address='vm.model.billing' payment='vm.model.payment'>
+		<billing-info 	address='vm.model.billing.address' 
+						payment='vm.model.billing.payment'
+						copy-shipping-address='vm.model.copyShippingAddress' 
+						copy-shipping='vm.copyShippingAddress'>
 		</billing-info>
 
 		<purchase-btn submit-form='vm.submitForm'>
