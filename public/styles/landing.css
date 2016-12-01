@@ -5,3 +5,16 @@ body {
 .center {
 	text-align: center
 }
+
+.cozyInputs-left {
+	padding-left: 0px;
+}
+
+.cozyInputs-right {
+	padding-right: 0px;
+}
+
+.cozyInputs-center {
+	padding-left: 0px;
+	padding-right: 0px;
+}

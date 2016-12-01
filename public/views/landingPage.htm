@@ -2,55 +2,58 @@
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		
 		<h2 class='center'>Trump 's Nuts</h2>
-		<h3 class='center'>Make Snacktime Great Again!</h3>
+		<h3 class='center'>Make Snack Great Again!</h3>
 
 		<p class='center'>Grab Some Nuts Today</p>
-	
-		<!--Progress Bar-->
+
+		<!--Product Display & Selection-->
 		<div class="row">
-			<div class="col xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				<product-selection>
+				</product-selection>
+			</div>
+		
+		<!--Business Column-->
+			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+
+				<!--Contact Info-->
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<contact-info name='vm.model.name' email='vm.model.email'>	
+						</contact-info>
+					</div>
+				</div>
 				
-				<progress-bar></progress-bar>
+				<!--Shipping Info-->
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<shipping-info 	address='vm.model.shipping.address' 
+										requirnments='vm.model.shipping.requirnments'>
+						</shipping-info>
+					</div>
+				</div>
+			
+				<!--Billing Info-->
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<billing-info 	address='vm.model.billing.address' 
+										payment='vm.model.billing.payment'
+										copy-shipping-address='vm.model.copyShippingAddress' 
+										copy-shipping='vm.copyShippingAddress'>
+						</billing-info>
+					</div>
+				</div>
+
+				<!--Purchase-->
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<purchase-btn submit-form='vm.submitForm'>
+						</purchase-btn>
+					</div>
+				</div>
 
 			</div>
 		</div>
-		
-		<!--Contact Info-->
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<contact-info name='vm.model.name' email='vm.model.email'>	
-				</contact-info>
-			</div>
-		</div>
-		
-		<!--Shipping Info-->
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<shipping-info 	address='vm.model.shipping.address' 
-								requirnments='vm.model.shipping.requirnments'>
-				</shipping-info>
-			</div>
-		</div>
-	
-		<!--Billing Info-->
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<billing-info 	address='vm.model.billing.address' 
-								payment='vm.model.billing.payment'
-								copy-shipping-address='vm.model.copyShippingAddress' 
-								copy-shipping='vm.copyShippingAddress'>
-				</billing-info>
-			</div>
-		</div>
-
-		<!--Purchase-->
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<purchase-btn submit-form='vm.submitForm'>
-				</purchase-btn>
-			</div>
-		</div>
-
 
 	</div>
 	
