@@ -2,10 +2,10 @@ angular
     .module('trumpsNuts')
     .controller('landingController', landingController);
 
-landingController.$inject = ['$scope', '$log', '$routeParams', '$location', 'dataModel', 'server'];
+landingController.$inject = ['$scope', '$log', '$routeParams', '$location', '$rootScope', 'dataModel', 'server'];
 
 /* @ngInject */
-function landingController($scope, $log, $routeParams, $location, dataModel, server) {
+function landingController($scope, $log, $routeParams, $location, $rootScope, dataModel, server) {
 
 	//define view model variable
 	var vm = this;
@@ -38,7 +38,7 @@ function landingController($scope, $log, $routeParams, $location, dataModel, ser
 
 	//view model methods
 	vm.copyShippingAddress = function(btnState) {
-		$log.info('copying', vm.model.shipping);
+		//$log.info('copying', vm.model.shipping);
 		if(btnState) vm.model.billing.address = vm.model.shipping.address;
 		else vm.model.billing.address = dataModel.billing.address;
 	}
@@ -50,9 +50,17 @@ function landingController($scope, $log, $routeParams, $location, dataModel, ser
 
 			$log.info(response);
 
+			//when the promise resolves, re-route them
+			$location.path('/confirmation/?tesing=goodTest');
+			$rootScope.$apply();
+
 		}).catch(function(error) {
 
 			$log.info(error);
 		});
+
+		//take them immediatly to the processing page
+		$location.path('/processing');
+
 	}
 }	

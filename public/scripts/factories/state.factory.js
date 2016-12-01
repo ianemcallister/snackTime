@@ -1,11 +1,11 @@
 angular
     .module('trumpsNuts')
-    .factory('state', state);
+    .factory('stateFactory', stateFactory);
 
-state.$inject = ['$log'];
+stateFactory.$inject = ['$log'];
 
 /* @ngInject */
-function state($log) {
+function stateFactory($log) {
 
 	var stateObject = {
 		model: {

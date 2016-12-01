@@ -9,6 +9,16 @@ function config($routeProvider) {
         templateUrl: 'views/landingPage.htm',
         controller: 'landingController',
         controllerAs: 'vm'
+    })
+    .when('/processing', {
+        templateUrl: 'views/processing.htm',
+        controller: 'processingController',
+        controllerAs: 'vm'
+    })
+    .when('/confirmation', {
+        templateUrl: 'views/confirmation.htm',
+        controller: 'confirmationController',
+        controllerAs: 'vm'
     });
 }
 
