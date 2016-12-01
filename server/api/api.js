@@ -4,6 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var fetch = require('node-fetch');
 var usps = require('usps-web-tools-node-sdk');
+var mailcenter = require('./mailcenter');
 
 //TODO: REMOVE THIS LATER
 
@@ -19,6 +20,9 @@ function init() {
 
 	//initialize usps
 	usps.configure({ userID: process.env.USPS_ID });
+
+	//initialize 
+	mailcenter.init();
 }
 
 function _get(url) {
@@ -70,7 +74,9 @@ function zipCheck(zipcodes) {
 
 function processOrder(data) {
 
-	console.log('processing the order', data);
+	//console.log('processing the order', data);
+
+	data = {'testin':'go'};
 
 	//return a promise
 	return new Promise(function(resolve, reject) {
@@ -80,6 +86,15 @@ function processOrder(data) {
 		//process payment
 
 		//mail request to Ah-Nuts
+		mailcenter.sendOrder(data).then(function(response) {
+
+			resolve(response);
+
+		}).catch(function(error) {
+
+			reject(error);
+			
+		});
 
 		//mail receipt to customer
 
