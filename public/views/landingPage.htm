@@ -9,7 +9,9 @@
 		<!--Product Display & Selection-->
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-				<product-selection>
+				<product-selection 	qty='vm.model.order.qty' 
+									price='vm.model.product.price'
+									subtotal='vm.model.order.cost.subtotal'>
 				</product-selection>
 			</div>
 		
@@ -52,6 +54,13 @@
 					</div>
 				</div>
 
+			</div>
+		</div>
+	
+		<!-- Footer -->
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				This is the footer
 			</div>
 		</div>
 

@@ -16,6 +16,9 @@ function productSelection() {
 		templateUrl: 'views/directives/productSelection.directive.htm',
 		replace: true,
 		scope: {
+			qty: '=',
+			price: '=',
+			subtotal: '='
 		},
 		link: linkFunc,
 		controller: productSelectionController,
@@ -32,6 +35,25 @@ function productSelection() {
     function productSelectionController($scope, $log) {
 	    var vm = this;
 
+	    //private methods
+
+
+	    //view model methods
+	    vm.calculateSubtotal = function() {
+	    	vm.subtotal = vm.qty * vm.price;
+	    }
+
+	   	vm.decrement = function() {
+	    	if(vm.qty > 1) vm.qty = vm.qty - 1;
+
+	    	vm.calculateSubtotal();
+	    }
+
+	    vm.increment = function() {
+	    	vm.qty = vm.qty + 1;
+
+	    	vm.calculateSubtotal();
+	    }
 
 	}
 

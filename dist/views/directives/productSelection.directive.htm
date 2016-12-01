@@ -1,8 +1,44 @@
 <div>
 	
-	Price $20.00
-	Quantity: 1
-	Cost: $20.00
-	Tax: $1.80
-	Subtotal: $21.80 
+	<!-- Hero Image -->
+
+	<h3>Limited Offer: $20</h3>
+	
+	<div class="row form-group">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<!--decrement btn-->
+			<button class="btn btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2"
+					ng-click='vm.decrement()'>
+					-
+			</button>
+				
+				<!--Qty Input-->
+				<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 cozyInputs-center">
+					<input 	type="number" 
+							class='form-control col-xs-12 col-sm-12 col-md-12 col-lg-12'
+							ng-model='vm.qty'
+							ng-blur='vm.calculateSubtotal()'
+							style='text-align: center'>
+				</div>
+
+			<!--increment btn-->
+			<button class="btn btn-primary col-xs-2 col-sm-2 col-md-2 col-lg-2"
+					ng-click='vm.increment()'>
+					+
+			</button>	
+		</div>
+
+		<!--Itemized-->
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h2>Cost: ${{vm.subtotal / 100}}.00</h2>
+		</div>
+		<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			Tax: $1.80
+		</div>-->
+		<!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			Subtotal: $21.80
+		</div>-->
+	</div>
+	
+	 
 </div>

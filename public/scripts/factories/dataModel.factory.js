@@ -14,6 +14,21 @@ function dataModel($log) {
 		},
 		email: '',
 		copyShippingAddress: true,
+		product: {
+			price: 2000
+		},
+		order: {
+			qty: 1,
+			cost: {
+				subtotal: 2000,
+				tax: 0,
+				discounts: {
+					promotions: [],
+					totalValue: 0
+				},
+				total: 0
+			}
+		},
 		shipping: {
 			address: {
 				street1: '',
