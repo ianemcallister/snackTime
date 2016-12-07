@@ -14,6 +14,7 @@ var api = {
 	_get:_get,
 	init:init,
 	zipCheck: zipCheck, 
+	postageCalculator:postageCalculator,
 	processOrder: processOrder
 };
 
@@ -69,6 +70,23 @@ function zipCheck(zipcodes) {
 			}
 		);
 
+	});
+
+}
+
+function postageCalculator(data) {
+
+	console.log('calculating Postage');
+
+	return new Promise(function(resolve, reject) {
+
+		usps.rateCalculator.rate(data, function(error, response) {
+			if(error) {
+				reject(error);
+			} else {
+				resolve(JSON.stringify(response));
+			}
+		});
 	});
 
 }

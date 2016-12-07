@@ -10,10 +10,12 @@ function server($log, $http) {
 
 	//gets from the server
 	backend._get = function(url) {
-
+		//$log.info('getting Backend');
 		return new Promise(function(resolve, reject) {
 
 			$http.get(url).then(function(response) {
+
+				//$log.info(response);
 
 				resolve(response.data);
 
@@ -43,6 +45,23 @@ function server($log, $http) {
 
 				reject(error);
 
+			});
+
+		});
+
+	}
+
+	//get the required square id
+	backend.getSqrAppId = function() {
+		//$log.info('sending from sqr');
+		//return the promise
+		return new Promise(function(resolve, reject) {
+
+			backend._get('/api/squareId').then(function(response) {
+				//$log.info('got this', response);
+				resolve(response);
+			}).catch(function(err) {
+				reject(err);
 			});
 
 		});

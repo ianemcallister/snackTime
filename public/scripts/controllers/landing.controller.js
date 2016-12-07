@@ -2,10 +2,10 @@ angular
     .module('trumpsNuts')
     .controller('landingController', landingController);
 
-landingController.$inject = ['$scope', '$log', '$routeParams', '$location', '$rootScope', 'dataModel', 'server'];
+landingController.$inject = ['$scope', '$log', '$location', '$rootScope', 'dataModel', 'server'];
 
 /* @ngInject */
-function landingController($scope, $log, $routeParams, $location, $rootScope, dataModel, server) {
+function landingController($scope, $log, $location, $rootScope, dataModel, server) {
 
 	//define view model variable
 	var vm = this;
@@ -34,7 +34,20 @@ function landingController($scope, $log, $routeParams, $location, $rootScope, da
 	
 	$scope.$watch('vm.model.shipping.address.street3', function(current, original) {
 		if(vm.model.copyShippingAddress) vm.model.billing.address.street3 = current;
-	});	
+	});		
+
+	//private functions
+	function init() {
+		
+		//TODO: MOVE THIS TO ROUTES LATER
+		server.getSqrAppId().then(function(response) {
+			//$log.info('response', response.id);
+			vm.model.apis.squareId = response.id;
+		}).catch(function(err) {
+
+		});
+
+	}
 
 	//view model methods
 	vm.copyShippingAddress = function(btnState) {
@@ -63,4 +76,8 @@ function landingController($scope, $log, $routeParams, $location, $rootScope, da
 		$location.path('/processing');
 
 	}
+
+	//start controller
+	init();
+
 }	

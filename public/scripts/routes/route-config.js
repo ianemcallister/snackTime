@@ -1,6 +1,7 @@
 angular
     .module('trumpsNuts')
     .config(config);
+
 /* @ngInject */
 function config($routeProvider) {   
     $routeProvider
@@ -21,6 +22,5 @@ function config($routeProvider) {
         controllerAs: 'vm'
     });
 }
-
 
 

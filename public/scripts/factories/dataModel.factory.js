@@ -55,6 +55,9 @@ function dataModel($log) {
 				csv: ''
 			}
 		},
+		apis: {
+			squareId: ''
+		},
 		_read:_read,
 		_update:_update,
 		readProp:readProp,

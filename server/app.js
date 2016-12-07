@@ -27,6 +27,14 @@ app.use(express.static('dist'));
 /*
 *	ENDPOINTS
 */
+//receives shipping to and from, returns shipping options
+app.get('/api/squareId', function(req, res) {
+	console.log('/api/squareId', process.env.SQUARE_SANDBOX_APP_ID);
+	//messaging
+	res.send({'id': process.env.SQUARE_SANDBOX_APP_ID});
+
+});
+
 //receives a zipcode, returns a city and state
 app.get('/api/zipcheck/:zipcode', function(req, res) {
 
