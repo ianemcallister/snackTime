@@ -16,7 +16,8 @@ function shippingCalculator() {
 		templateUrl: 'views/directives/shippingCalculator.directive.htm',
 		replace: true,
 		scope: {
-			serviceClass: '='
+			serviceClass: '=',
+			cost: '='
 		},
 		link: linkFunc,
 		controller: shippingCalculatorController,
@@ -33,7 +34,7 @@ function shippingCalculator() {
     function shippingCalculatorController($scope, $log) {
 	    var vm = this;
 
-	    
+	    //$log.info('vm.serviceClass', vm.serviceClass)
 	}
 
 	return  directive;

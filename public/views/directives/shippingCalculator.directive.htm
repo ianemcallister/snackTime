@@ -9,38 +9,58 @@
 		
 		<!--HEADER ROW-->
 		<div class="row">
-			<div class="col-xs-12 col sm-12 col-md-12 col-lg-12">
+			<div class="col-xs-12 col sm-12 col-md-12 col-lg-12 center">
 				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Class</div>
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Shipping Time</div>
-				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Cost</div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><strong>Class</strong></div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><strong>Shipping Time</strong></div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><strong>Cost</strong></div>
 			</div>
 		</div>
 		
 		<!--EXPRESS-->
 		<div class="row">
-			<div class="col-xs-12 col sm-12 col-md-12 col-lg-12">
+			<div class="col-xs-12 col sm-12 col-md-12 col-lg-12 center">
 				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 					<input type="radio" name='class' ng-model='vm.serviceClass.isPriority' value='false'>
 				</div>
 				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Express</div>
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
-				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<span ng-if='!vm.serviceClass.dataAquired'>-</span>
+				</div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<span ng-if='!vm.serviceClass.dataAquired'>-</span>
+				</div>
 			</div>
 		</div>
 		
 		<!--PRIORITY-->
 		<div class="row">
-			<div class="col-xs-12 col sm-12 col-md-12 col-lg-12">
+			<div class="col-xs-12 col sm-12 col-md-12 col-lg-12 center">
 				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
 					<input type="radio" name='class' ng-model='vm.serviceClass.isPriority' value='true'>
 				</div>
 				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Priority</div>
-				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
-				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					<span ng-if='!vm.serviceClass.dataAquired'>-</span>
+				</div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+					<span ng-if='!vm.serviceClass.dataAquired'>-</span>
+				</div>
 			</div>
 		</div>
 
+	</div>
+
+	<!--Itemized-->
+	<div class="row">
+		<h4 class='col-xs-12 col sm-12 col-md-12 col-lg-12' style='margin-top:10px;'>
+			Shipping Costs: 
+			<span ng-if='!vm.serviceClass.dataAquired'>-</span>
+			<span ng-if='vm.serviceClass.dataAquired'>
+			{{ vm.cost.amount / 100 | currency}}
+			</span>
+
+		</h4>
 	</div>
 
 </div>

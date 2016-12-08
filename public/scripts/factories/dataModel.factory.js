@@ -39,10 +39,25 @@ function dataModel($log) {
 				zip: ''
 			}, 
 			requirnments: {
-				isPriority: 'true'
+				isPriority: 'true',
+				dataAquired: false,
+				priority: {
+					transitDays: 0,
+					cost: {
+						amount: 0,
+						currency: 'USD'
+					}
+				},
+				express: {
+					transitDays: 0,
+					cost: {
+						amount: 0,
+						currency: 'USD'
+					}
+				}
 			},
 			cost: {
-				amount: 0,
+				amount: 645,
 				currency: 'USD'
 			}
 		},

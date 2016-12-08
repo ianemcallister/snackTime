@@ -18,7 +18,8 @@ function shippingInfo() {
 		scope: {
 			address: '=',
 			requirnments: '=',
-			cost: '='
+			cost: '=',
+			qty: '='
 		},
 		link: linkFunc,
 		controller: shippingInfoController,
@@ -30,15 +31,26 @@ function shippingInfo() {
 	function linkFunc(scope, el, attr, ctrl) {
     }
 
-    shippingInfoController.$inject = ['$scope', '$log'];
+    shippingInfoController.$inject = ['$scope', '$log', 'server'];
     /* @ngInject */
-    function shippingInfoController($scope, $log) {
+    function shippingInfoController($scope, $log, server) {
 	    var vm = this;
 
 	    //$log.info('vm.requirnments', vm.requirnments, 'vm.cost', vm.cost);
 	    //view model methods
 	    vm.calculateShipping = function(zipPoints) {
 	    	$log.info('calculating the info now', zipPoints);
+
+	    	//get the shipping info from USPS API
+	    	server.postageCalculator(zipPoints, vm.qty).then(function(response) {
+	    		
+	    		vm.requirnments.dataAquired = true;
+
+	    		$log.info('got this back from postageCalculator', response, vm.requirnments.dataAquired);
+
+	    	}).catch(function(error) {
+	    		$log.info('got this error from the postageCalculator', error);
+	    	})
 	    }
 
 

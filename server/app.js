@@ -67,6 +67,22 @@ app.get('/api/zipcheck/:zipcode', function(req, res) {
 
 });
 
+//receives starting point ending point and qty, calculates shipping
+app.get('/api/calcPostage/:start/:end/:qty', function(req, res) {
+
+	//messaging
+	console.log('server was hit for calc postage', req.params);
+
+	//run values through the api
+	//TODO: VALIDATE THE PARAMS LATER
+	API.postageCalculator(req.params).then(function(response) {
+		res.send(response);
+	}).catch(function(error) {
+		res.send(error);
+	});
+
+});
+
 //receives shipping to and from, returns shipping options
 app.get('/api/shipping', function(req, res) {
 

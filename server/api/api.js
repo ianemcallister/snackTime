@@ -12,6 +12,7 @@ var mailcenter = require('./mailcenter');
 
 var api = {
 	_get:_get,
+	_prepPostageXMLContext:_prepPostageXMLContext,
 	init:init,
 	zipCheck: zipCheck, 
 	postageCalculator:postageCalculator,
@@ -47,6 +48,33 @@ function _get(url) {
 
 }
 
+function _prepPostageXMLContext(params) {
+	
+	var totalOzs = params.qty * 6;
+	var weight = {
+		pounds: (totalOzs - (totalOzs % 16)) / 16,
+		ounces: totalOzs % 16
+	}
+
+	return {
+				package: 
+					[
+						{
+							service: "PRIORITY",
+							pounds: weight.pounds,
+							ounces: weight.ounces,
+							zipOrigination: params.start,
+							zipDestination: params.end,
+							size: 'Large',
+							girth: 5,
+							width: 5,
+							length: 5,
+							height: 5
+						}
+					]
+			}
+}
+
 function zipCheck(zipcodes) {
 
 	console.log('checking zipcode');
@@ -74,12 +102,17 @@ function zipCheck(zipcodes) {
 
 }
 
-function postageCalculator(data) {
+function postageCalculator(params) {
 
-	console.log('calculating Postage');
+	console.log('calculating Postage', params);
+
+	//1. FIRST CHECK FOR PRIORITY
+	//2. THEN CHECK FOR EXPRESS
+	
+	var data = _prepPostageXMLContext(params);
 
 	return new Promise(function(resolve, reject) {
-
+ 
 		usps.rateCalculator.rate(data, function(error, response) {
 			if(error) {
 				reject(error);
@@ -87,6 +120,7 @@ function postageCalculator(data) {
 				resolve(JSON.stringify(response));
 			}
 		});
+		//resolve('postageCalculator worked');
 	});
 
 }

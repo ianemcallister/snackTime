@@ -94,6 +94,31 @@ function server($log, $http) {
 
 	}
 
+	backend.postageCalculator = function(zipPoints, qty) {
+		
+		$log.info('got these data points. zipPoints:', zipPoints, 'qty', qty);
+
+		var url = '/api/calcPostage/' + zipPoints.start + "/" + zipPoints.end + '/' + qty;
+
+		return new Promise(function(resolve, reject) {
+
+			backend._get(url).then(function(response) {
+
+				$log.info('got this response', response);
+				//return a good response
+				resolve(response);
+
+			}).catch(function(error) {
+
+				//return an error response
+				reject(error);
+
+			});
+
+		});
+
+	}
+
 	backend.submitSale = function(orderForm) {
 
 		$log.info('submitting sale');
