@@ -26,16 +26,15 @@ var data = {
 				package: 
 					[
 						{
-							service: "PRIORITY",
-							pounds: 5,
-							ounces: 8,
+							service: "EXPRESS",
+							pounds: 0,
+							ounces: 10,
 							zipOrigination: 97005,
-							zipDestination: 90046,
-							pounds: 1,
+							zipDestination: 97405,
 							size: 'Large',
-							girth: 55,
-							width: 15,
-							length: 15,
+							girth: 5,
+							width: 5,
+							length: 5,
 							height: 5
 						}
 					]

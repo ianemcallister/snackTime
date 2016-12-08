@@ -1,3 +1,46 @@
 <div>
-	shipping Calculator
+	<!--heading-->
+	<div class="row">
+		<h4 class='col-xs-12 col sm-12 col-md-12 col-lg-12' style='margin-top:0px;'>USPS Shipping Options</h4>
+	</div>
+
+	<!--the container-->
+	<div class="col-xs-12 col sm-12 col-md-12 col-lg-12">
+		
+		<!--HEADER ROW-->
+		<div class="row">
+			<div class="col-xs-12 col sm-12 col-md-12 col-lg-12">
+				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Class</div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Shipping Time</div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Cost</div>
+			</div>
+		</div>
+		
+		<!--EXPRESS-->
+		<div class="row">
+			<div class="col-xs-12 col sm-12 col-md-12 col-lg-12">
+				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+					<input type="radio" name='class' ng-model='vm.serviceClass.isPriority' value='false'>
+				</div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Express</div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+			</div>
+		</div>
+		
+		<!--PRIORITY-->
+		<div class="row">
+			<div class="col-xs-12 col sm-12 col-md-12 col-lg-12">
+				<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+					<input type="radio" name='class' ng-model='vm.serviceClass.isPriority' value='true'>
+				</div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Priority</div>
+				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"></div>
+				<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+			</div>
+		</div>
+
+	</div>
+
 </div>

@@ -15,7 +15,9 @@ function shippingCalculator() {
 		restrict: 'AECM',
 		templateUrl: 'views/directives/shippingCalculator.directive.htm',
 		replace: true,
-		scope: {},
+		scope: {
+			serviceClass: '='
+		},
 		link: linkFunc,
 		controller: shippingCalculatorController,
 		controllerAs: 'vm',
@@ -31,6 +33,7 @@ function shippingCalculator() {
     function shippingCalculatorController($scope, $log) {
 	    var vm = this;
 
+	    
 	}
 
 	return  directive;

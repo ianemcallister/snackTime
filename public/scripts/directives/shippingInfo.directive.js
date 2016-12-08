@@ -17,7 +17,8 @@ function shippingInfo() {
 		replace: true,
 		scope: {
 			address: '=',
-			requirnments: '='
+			requirnments: '=',
+			cost: '='
 		},
 		link: linkFunc,
 		controller: shippingInfoController,
@@ -34,7 +35,12 @@ function shippingInfo() {
     function shippingInfoController($scope, $log) {
 	    var vm = this;
 
-	    $log.info(vm.address);
+	    //$log.info('vm.requirnments', vm.requirnments, 'vm.cost', vm.cost);
+	    //view model methods
+	    vm.calculateShipping = function(zipPoints) {
+	    	$log.info('calculating the info now', zipPoints);
+	    }
+
 
 	}
 

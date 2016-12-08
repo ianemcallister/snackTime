@@ -38,7 +38,13 @@ function dataModel($log) {
 				state: '',
 				zip: ''
 			}, 
-			requirnments: {}
+			requirnments: {
+				isPriority: 'true'
+			},
+			cost: {
+				amount: 0,
+				currency: 'USD'
+			}
 		},
 		billing: {
 			address: {
