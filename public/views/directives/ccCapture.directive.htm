@@ -1,5 +1,28 @@
 <div>
-	
-	
+		
+	<label>Card Number</label>
+  <div id="sq-card-number"></div>
+  <label>CVV</label>
+  <div id="sq-cvv"></div>
+  <label>Expiration Date</label>
+  <div id="sq-expiration-date"></div>
+  <label>Postal Code</label>
+  <div id="sq-postal-code"></div>
+	  
+
+	  <form id="nonce-form" novalidate action="REPLACE_ME" method="post">
+
+	    <!--
+	      Whenever a nonce is generated, it's assigned as the value of this hidden
+	      input field.
+	    -->
+	    <input type="hidden" id="card-nonce" name="nonce">
+
+	    <!--
+	      Clicking this Submit button kicks off the process to generate a card nonce
+	      from the buyer's card information.
+	    -->
+	    <input type="submit" onclick="requestCardNonce(event)">
+	  </form>
 
 </div>
