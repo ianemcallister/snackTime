@@ -33,7 +33,7 @@ function ccCapture() {
 
 	    var applicationId = 'sandbox-sq0idp-yGc6DrklfJNBsc4MQ5fDDw';
 
-	    var paymentForm = new SqPaymentForm({
+	    vm.paymentForm = new SqPaymentForm({
 		    applicationId: applicationId,
 		    inputClass: 'sq-input',
 		    inputStyles: [
@@ -128,7 +128,13 @@ function ccCapture() {
 		        // paymentForm.setPostalCode('94103');
 		      }
 		    }
-		  });
+		});
+		
+	    var init = function() {
+	    	vm.paymentForm.build();
+	    }
+
+	    init();
 	}
 
 	return  directive;
