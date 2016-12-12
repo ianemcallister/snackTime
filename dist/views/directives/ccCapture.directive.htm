@@ -1,16 +1,15 @@
 <div>
 		
 	<label>Card Number</label>
-	  <div id="sq-card-number"></div>
+	  <div ng-model='vm.data.card.card_number' id="sq-card-number"></div>
 	<label>CVV</label>
-	  <div id="sq-cvv"></div>
+	  <div ng-model='vm.data.card.cvv' id="sq-cvv"></div>
 	<label>Expiration Date</label>
-	  <div id="sq-expiration-date"></div>
+	  <div ng-model='vm.data.card.expiration_date' id="sq-expiration-date"></div>
 	<label>Postal Code</label>
-	  <div id="sq-postal-code"></div>
+	  <div ng-model="vm.data.card.postal_code" id="sq-postal-code"></div>
 	  
-
-	  <form id="nonce-form" novalidate action="REPLACE_ME" method="post">
+	  <form novalidate id="payment-form" ng-hide="isPaymentSuccess">
 
 	    <!--
 	      Whenever a nonce is generated, it's assigned as the value of this hidden
@@ -22,7 +21,15 @@
 	      Clicking this Submit button kicks off the process to generate a card nonce
 	      from the buyer's card information.
 	    -->
-	    <input type="submit" onclick="requestCardNonce(event)">
+	    <input 	ng-click="vm.submitForm()" 
+	    		ng-disabled="vm.isProcessing" 
+	    		type="submit" 
+	    		id="submit" 
+	    		value="PURCHASE NOW" 
+	    		class='btn btn-success col-xs-12 col-sm-12 col-md-12 col-lg-12' 
+	    		>
 	  </form>
+
+	  {{data}}
 
 </div>

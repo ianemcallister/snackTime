@@ -23,4 +23,12 @@ function config($routeProvider) {
     });
 }
 
-
+function getAuthId(server) {
+    return new Promise(function(resolve, reject) {
+        server.getSqrAppId().then(function(response) {
+            resolve(response.id);
+        }).catch(function(error) {
+            reject(error);
+        });
+    })
+}
