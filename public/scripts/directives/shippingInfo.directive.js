@@ -39,14 +39,19 @@ function shippingInfo() {
 	    //$log.info('vm.requirnments', vm.requirnments, 'vm.cost', vm.cost);
 	    //view model methods
 	    vm.calculateShipping = function(zipPoints) {
-	    	$log.info('calculating the info now', zipPoints);
+	    	//$log.info('calculating the info now', zipPoints);
 
 	    	//get the shipping info from USPS API
 	    	server.postageCalculator(zipPoints, vm.qty).then(function(response) {
 	    		
 	    		vm.requirnments.dataAquired = true;
-
-	    		$log.info('got this back from postageCalculator', response, vm.requirnments.dataAquired);
+	    		vm.requirnments.priority.cost.amount = parseFloat(response.priority.rate);
+	    		vm.requirnments.priority.transitDays = response.priority.mailService;
+	    		vm.requirnments.express.cost.amount = parseFloat(response.express.rate);
+	    		vm.requirnments.express.transitDays = response.express.mailService;
+	    		$scope.$apply();
+	    		
+	    		$log.info('got this back from postageCalculator', response, vm.requirnments);
 
 	    	}).catch(function(error) {
 	    		$log.info('got this error from the postageCalculator', error);

@@ -27,11 +27,12 @@ function shippingCalculator() {
 
 	/* @ngInject */
 	function linkFunc(scope, el, attr, ctrl) {
+	
     }
 
-    shippingCalculatorController.$inject = ['$scope', '$log'];
+    shippingCalculatorController.$inject = ['$scope', '$log', 'server'];
     /* @ngInject */
-    function shippingCalculatorController($scope, $log) {
+    function shippingCalculatorController($scope, $log, server) {
 	    var vm = this;
 
 	    //$log.info('vm.serviceClass', vm.serviceClass)

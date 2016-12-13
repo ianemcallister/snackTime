@@ -50,7 +50,7 @@ function _get(url) {
 
 }
 
-function _prepPostageXMLContext(params) {
+function _prepPostageXMLContext(service, params) {
 	
 	var totalOzs = params.qty * 6;
 	var weight = {
@@ -62,7 +62,7 @@ function _prepPostageXMLContext(params) {
 				package: 
 					[
 						{
-							service: "PRIORITY",
+							service: service,
 							pounds: weight.pounds,
 							ounces: weight.ounces,
 							zipOrigination: params.start,
@@ -155,19 +155,42 @@ function postageCalculator(params) {
 
 	console.log('calculating Postage', params);
 
-	//1. FIRST CHECK FOR PRIORITY
-	//2. THEN CHECK FOR EXPRESS
 	
-	var data = _prepPostageXMLContext(params);
+	
+	
+	
 
 	return new Promise(function(resolve, reject) {
- 
+ 	
+ 		//1. FIRST CHECK FOR PRIORITY
+ 		var data = _prepPostageXMLContext('PRIORITY', params);
+ 		var returnObject = {
+ 			priority: {},
+ 			express: {}
+ 		}
 		usps.rateCalculator.rate(data, function(error, response) {
 			if(error) {
 				reject(error);
 			} else {
-				resolve(JSON.stringify(response));
+				returnObject.priority = response.package.postage;
+
+				data = _prepPostageXMLContext('EXPRESS', params);
+
+				//2. THEN CHECK FOR EXPRESS
+				usps.rateCalculator.rate(data, function(error, response) {
+
+					if(error) {
+						reject(error);
+					} else {
+						returnObject.express = response.package.postage;
+
+						resolve(returnObject);
+					}
+
+				});
+
 			}
+
 		});
 		//resolve('postageCalculator worked');
 	});
