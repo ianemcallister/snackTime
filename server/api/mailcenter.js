@@ -53,7 +53,7 @@ function sendOrder(data) {
 
 	//mailing to admin for fullfillment
 	MAIL.mailOptions = {
-		from: data.email, // sender address
+		from: 'ian@ah-nuts.com', // sender address
 		to: 'ian@ah-nuts.com', //data.email, // list of receivers
 		subject: 'Order Placed', // Subject line
 		text: BODY.text, //.plainText, // plaintext body
@@ -86,7 +86,7 @@ function sendReceipt(data) {
 	//mailing to admin for fullfillment
 	MAIL.mailOptions = {
 		from: 'ian@ah-nuts.com', // sender address
-		to: data.email, //data.email, // list of receivers
+		to: 'ian@ah-nuts.com', //data.email, // list of receivers
 		subject: 'Order Confirmation', // Subject line
 		text: BODY.text, //.plainText, // plaintext body
 		html: BODY.htmlText // html body

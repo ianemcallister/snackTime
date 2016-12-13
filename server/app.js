@@ -29,7 +29,7 @@ app.use(express.static('dist'));
 */
 //receives shipping to and from, returns shipping options
 app.get('/api/squareId', function(req, res) {
-	console.log('/api/squareId', process.env.SQUARE_SANDBOX_APP_ID);
+	//console.log('/api/squareId', process.env.SQUARE_SANDBOX_APP_ID);
 	//messaging
 	res.send({'id': process.env.SQUARE_SANDBOX_APP_ID});
 
@@ -94,7 +94,7 @@ app.get('/api/shipping', function(req, res) {
 app.post('/charges/charge_card', function(req, res) {
 
 	//messaging
-	API.chargeCard(req.body).then(function(response) {
+	API.processOrder(req.body).then(function(response) {
 		res.send(response);
 	}).catch(function(error) {
 		res.send(error);

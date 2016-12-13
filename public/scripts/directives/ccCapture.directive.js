@@ -31,9 +31,9 @@ function ccCapture() {
 	function linkFunc(scope, el, attr, ctrl) {
     }
 
-    ccCaptureController.$inject = ['$scope', '$log', 'server'];
+    ccCaptureController.$inject = ['$scope', '$log', '$location', 'server'];
     /* @ngInject */
-    function ccCaptureController($scope, $log, server) {
+    function ccCaptureController($scope, $log, $location, server) {
 	    var vm = this;
 
 	    vm.data = { card:{} };
@@ -64,6 +64,8 @@ function ccCapture() {
 
 			server.chargeCard(url, data).then(function(response) {
 				$log.info('response', response);
+				$location.path('/confirmation');
+				$scope.$apply();
 			}).catch(function(error) {
 				$log.info('error', error);
 			})
@@ -133,7 +135,7 @@ function ccCapture() {
 				          vm.card_errors = [];
 				          // Delete this line and uncomment the lines below when you're ready
 				          // to start submitting nonces to your server.
-				          alert('Nonce received: ' + nonce);
+				          //alert('Nonce received: ' + nonce);
 
 				          vm.chargeCardWithNonce(nonce);
 

@@ -105,10 +105,8 @@ function zipCheck(zipcodes) {
 }
 
 function chargeCard(params) {
-
-	var base_url = "https://connect.squareup.com/v2";
 	
-	console.log(params, process.env.SQUARE_SANDBOX_APP_TOKEN);
+	//console.log(params, process.env.SQUARE_SANDBOX_APP_TOKEN);
 	
 	return new Promise(function(resolve, reject) {
 
@@ -178,7 +176,7 @@ function postageCalculator(params) {
 
 function processOrder(data) {
 
-	//console.log('processing the order', data);
+	console.log('processing the order', data);
 
 	//data = {'testin':'go'};
 
@@ -190,14 +188,19 @@ function processOrder(data) {
 		//1. process payment
 		square.runCC(data).then(function(response) {
 
+			console.log('processed the CC', response);
+
 			//2. mail request to Ah-Nuts
 			mailcenter.sendOrder(data).then(function(response) {
+
+				console.log('sending ah-nuts email');
 
 				//3. if everything worked mail receipt to customer
 				mailcenter.sendReceipt(data).then(function(response) {
 
+					console.log('sending customer email');
 					//return success message
-					resolve({'good': 'everything worked'});
+					resolve({status: 200, 'good': 'everything worked'});
 
 				//.3 catch
 				}).catch(function(error) {
