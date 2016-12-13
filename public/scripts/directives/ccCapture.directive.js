@@ -16,7 +16,10 @@ function ccCapture() {
 		templateUrl: 'views/directives/ccCapture.directive.htm',
 		replace: true,
 		scope: {
-			isProcessing: '='
+			isProcessing: '=',
+			zip: '=',
+			stateId: '=',
+			cityName: '='
 		},
 		link: linkFunc,
 		controller: ccCaptureController,
@@ -47,20 +50,25 @@ function ccCapture() {
 			
 			var url = "/charges/charge_card";
 			
-			$log.info('charging card', vm.data);
-			/*var data = {
+			var data = {
 				nonce: nonce,
-				product_id: $scope.data.product_id,
-				name: $scope.data.user.name,
-				email: $scope.data.user.email,         
-				street_address_1: $scope.data.user.street_address_1,
-				street_address_2: $scope.data.user.street_address_2,
-				city: $scope.data.user.city,
-				state: $scope.data.user.state,
-				zip: $scope.data.user.zip
+				product_id: 1123,//$scope.data.product_id,
+				name: 'John Smith', //$scope.data.user.name,
+				//email: $scope.data.user.email,         
+				street_address_1: '1234 Main Street', //$scope.data.user.street_address_1,
+				street_address_2: '', //$scope.data.user.street_address_2,
+				city: vm.cityName, //$scope.data.user.city,
+				state: vm.stateId, //$scope.data.user.state,
+				zip: vm.zip //$scope.data.user.zip
 			};
 
-			$http.post(url, data).success(function(data, status) {
+			server.chargeCard(url, data).then(function(response) {
+				$log.info('response', response);
+			}).catch(function(error) {
+				$log.info('error', error);
+			})
+
+			/*$http.post(url, data).success(function(data, status) {
 				if (data.status == 400){
 				  // display server side card processing errors 
 				  $scope.isPaymentSuccess = false;
@@ -115,7 +123,7 @@ function ccCapture() {
 				      // nonce, even if the request failed because of an error.
 				      cardNonceResponseReceived: function(errors, nonce, cardData) {
 				        if (errors) {
-				          $log.info("Encountered errors:");
+				          $log.info("Encountered errors:", errors);
 				          vm.card_errors = errors;
 		            	  vm.isProcessing = false;
 		            	  $scope.$apply(); // required since this is not an angular function

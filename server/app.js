@@ -91,9 +91,14 @@ app.get('/api/shipping', function(req, res) {
 });
 
 //receives payment request, returns success or failure confirmation
-app.post('/api/payment', function(req, res) {
+app.post('/charges/charge_card', function(req, res) {
 
-	//messaging 
+	//messaging
+	API.chargeCard(req.body).then(function(response) {
+		res.send(response);
+	}).catch(function(error) {
+		res.send(error);
+	});
 
 });
 

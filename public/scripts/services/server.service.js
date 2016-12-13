@@ -51,6 +51,21 @@ function server($log, $http) {
 
 	}
 
+	//charge a card
+	backend.chargeCard = function(url, data) {
+
+		return new Promise(function(resolve, reject) {
+
+			backend._post(url, data, {}).then(function(response) {
+				resolve(response);
+			}).catch(function(error) {
+				reject(error);
+			});
+
+		});
+
+	}
+
 	//get the required square id
 	backend.getSqrAppId = function() {
 		//$log.info('sending from sqr');

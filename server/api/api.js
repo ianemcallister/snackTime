@@ -14,7 +14,8 @@ var api = {
 	_get:_get,
 	_prepPostageXMLContext:_prepPostageXMLContext,
 	init:init,
-	zipCheck: zipCheck, 
+	zipCheck: zipCheck,
+	chargeCard:chargeCard, 
 	postageCalculator:postageCalculator,
 	processOrder: processOrder
 };
@@ -98,6 +99,17 @@ function zipCheck(zipcodes) {
 			}
 		);
 
+	});
+
+}
+
+function chargeCard(params) {
+
+	console.log(params);
+	
+	return new Promise(function(resolve, reject) {
+
+		resolve({'test': 'it worked'});
 	});
 
 }
