@@ -6,6 +6,7 @@ var fetch = require('node-fetch');
 var usps = require('usps-web-tools-node-sdk');
 var square = require('./square');
 var mailcenter = require('./mailcenter');
+var unirest = require('unirest');
 
 //TODO: REMOVE THIS LATER
 
@@ -105,11 +106,49 @@ function zipCheck(zipcodes) {
 
 function chargeCard(params) {
 
-	console.log(params);
+	var base_url = "https://connect.squareup.com/v2";
+	
+	console.log(params, process.env.SQUARE_SANDBOX_APP_TOKEN);
 	
 	return new Promise(function(resolve, reject) {
 
-		resolve({'test': 'it worked'});
+		//first get the list of locations
+		unirest.get(base_url + '/locations')
+		.headers({
+			'Authorization': 'Bearer ' + process.env.SQUARE_SANDBOX_APP_TOKEN,
+			'Accept': 'application/json'
+		})
+		.end(function(response) {
+
+			var token = require('crypto').randomBytes(64).toString('hex');
+
+			var request_body = {
+				card_nonce: params.nonce,
+				amount_money: {
+					amount: 2000,
+					currency: 'USD'
+				},
+				idempotency_key: token
+			}
+
+			//if we got a good response, send the acutal request
+			unirest.post(base_url + '/locations/' + 'CBASECj4vA2gWFe7i9yDyiz6pfE' + '/transactions')
+			.headers({
+				'Authorization': 'Bearer ' + process.env.SQUARE_SANDBOX_APP_TOKEN,
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			})
+			.send(request_body)
+			.end(function(response) {
+				if(response.body.errors) {
+					reject({status: 400, errors: response.body.errors});
+				} else {
+					resolve({status: 200, data: response.body});
+				}
+			});
+
+		});
+
 	});
 
 }
