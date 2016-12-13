@@ -16,7 +16,10 @@ function ccCapture() {
 		templateUrl: 'views/directives/ccCapture.directive.htm',
 		replace: true,
 		scope: {
+			productCosts: '=',
+			shippingCosts: '=',
 			isProcessing: '=',
+			customerName: '=',
 			zip: '=',
 			stateId: '=',
 			cityName: '='
@@ -40,7 +43,7 @@ function ccCapture() {
 
 	    //view model methods
 	    vm.submitForm = function() {
-			$log.info('submitting', vm.data);
+			//$log.info('submitting', vm.data);
 			vm.isProcessing = true;
 			vm.paymentForm.requestCardNonce();
 			return false;
@@ -53,7 +56,7 @@ function ccCapture() {
 			var data = {
 				nonce: nonce,
 				product_id: 1123,//$scope.data.product_id,
-				name: 'John Smith', //$scope.data.user.name,
+				name: vm.customerName, //'John Smith', //$scope.data.user.name,
 				//email: $scope.data.user.email,         
 				street_address_1: '1234 Main Street', //$scope.data.user.street_address_1,
 				street_address_2: '', //$scope.data.user.street_address_2,

@@ -10,8 +10,22 @@ function landingController($scope, $log, $location, $rootScope, dataModel, serve
 	//define view model variable
 	var vm = this;
 	vm.model = dataModel;
+	vm.contactName = '';
+	vm.productCosts = 0;
 
 	//watchers
+	$scope.$watch('vm.model.name.first', function(current, original) {
+		vm.contactName = vm.model.name.first + ' ' + vm.model.name.last;
+	});
+
+	$scope.$watch('vm.model.name.last', function(current, original) {
+		vm.contactName = vm.model.name.first + ' ' + vm.model.name.last;
+	});
+
+	$scope.$watch('vm.model.order.qty', function(current, original) {
+		vm.productCosts = vm.model.order.qty * vm.model.product.price;
+	});
+
 	$scope.$watch('vm.model.shipping.address.zip', function(current, original) {
 		if(vm.model.copyShippingAddress) vm.model.billing.address.zip = current;
 	});
@@ -56,7 +70,7 @@ function landingController($scope, $log, $location, $rootScope, dataModel, serve
 		else vm.model.billing.address = dataModel.billing.address;
 	}
 
-	vm.submitForm = function(value) {
+	/*vm.submitForm = function(value) {
 		$log.info('submitting', value);
 
 		server.submitSale(vm.model).then(function(response) {
@@ -75,7 +89,7 @@ function landingController($scope, $log, $location, $rootScope, dataModel, serve
 		//take them immediatly to the processing page
 		$location.path('/processing');
 
-	}
+	}*/
 
 	//start controller
 	init();

@@ -16,6 +16,9 @@ function billingInfo() {
 		templateUrl: 'views/directives/billingInfo.directive.htm',
 		replace: true,
 		scope: {
+			productCosts: '=',
+			shippingCosts: '=',
+			contactName: '=',
 			address: '=',
 			payment: '=',
 			copyShippingAddress: '=',
