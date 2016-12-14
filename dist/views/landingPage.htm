@@ -36,13 +36,13 @@
 						</shipping-info>
 					</div>
 				</div>
-			
+				
 				<!--Billing Info-->
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<billing-info 	contact-name='vm.contactName'
 										product-costs='vm.productCosts'
-										shipping-costs='vm.shippingCosts'
+										shipping-costs='vm.model.shipping.cost.amount'
 										address='vm.model.billing.address' 
 										payment='vm.model.billing.payment'
 										copy-shipping-address='vm.model.copyShippingAddress' 

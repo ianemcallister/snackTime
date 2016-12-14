@@ -10,7 +10,9 @@
 	  <div ng-model="vm.data.card.postal_code" id="sq-postal-code"></div>
 	  
 	<div>
+		
 		<h3>Total: {{(vm.productCosts + vm.shippingCosts ) / 100 | currency:"$":2}} </h3>
+		
 	</div>
 
 	  <form novalidate id="payment-form" ng-hide="isPaymentSuccess">
