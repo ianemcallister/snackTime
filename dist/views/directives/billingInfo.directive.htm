@@ -40,14 +40,13 @@
 		</div>
 	
 	</div>
-	
+	<!--TODAY CHANGE THE SHIPPING ADDRESS TO VARIABLE LATER-->
 	<cc-capture is-processing='false' 
 				product-costs='vm.productCosts'
 				shipping-costs='vm.shippingCosts'
-				contact-name='vm.contactName'
-				zip='vm.address.zip' 
-				state-id='vm.address.state'
-				city-name='vm.address.city'>
+				customer-contact='vm.customerContact'
+				shipping-address='vm.billingAddress'	
+				billing-address='vm.billingAddress'>
 				
 	</cc-capture>
 

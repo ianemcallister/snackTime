@@ -51,9 +51,11 @@ function init() {
 
 function sendOrder(data) {
 
+	console.log('sendOrder', data);
+	
 	//mailing to admin for fullfillment
 	MAIL.mailOptions = {
-		from: 'ian@ah-nuts.com', // sender address
+		from: data.billing.email, // sender address
 		to: 'ian@ah-nuts.com', //data.email, // list of receivers
 		subject: 'Order Placed', // Subject line
 		text: BODY.text, //.plainText, // plaintext body
@@ -83,10 +85,12 @@ function sendOrder(data) {
 
 function sendReceipt(data) {
 
+	console.log('sendReceipt', data);
+
 	//mailing to admin for fullfillment
 	MAIL.mailOptions = {
 		from: 'ian@ah-nuts.com', // sender address
-		to: 'ian@ah-nuts.com', //data.email, // list of receivers
+		to: data.billing.email, //data.email, // list of receivers
 		subject: 'Order Confirmation', // Subject line
 		text: BODY.text, //.plainText, // plaintext body
 		html: BODY.htmlText // html body

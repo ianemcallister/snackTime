@@ -18,7 +18,7 @@ function billingInfo() {
 		scope: {
 			productCosts: '=',
 			shippingCosts: '=',
-			contactName: '=',
+			customerContact: '=',
 			address: '=',
 			payment: '=',
 			copyShippingAddress: '=',
@@ -38,6 +38,17 @@ function billingInfo() {
     /* @ngInject */
     function billingInfoController($scope, $log) {
 	    var vm = this;
+
+	    vm.billingAddress = {
+	    	street: {
+	    		"0": vm.address.street1,
+	    		"1": vm.address.street2,
+	    		"2": vm.address.street3
+	    	},
+	    	city: vm.address.city,
+	    	state: vm.address.state,
+	    	zip: vm.address.zip
+	    }
 
 	    //view model methods
 	    vm.toggleAddressCopy = function(btnState) {

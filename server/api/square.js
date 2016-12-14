@@ -33,6 +33,8 @@ function _getLocations() {
 function runCC(data) {
 	var sqr = this;
 
+	console.log('runCC', data);
+
 	return new Promise(function(resolve, reject) {
 		
 		sqr._getLocations().then(function(response) {

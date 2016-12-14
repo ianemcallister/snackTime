@@ -209,17 +209,17 @@ function processOrder(data) {
 		//check for errors
 
 		//1. process payment
-		square.runCC(data).then(function(response) {
+		square.runCC(data.payment).then(function(response) {
 
 			console.log('processed the CC', response);
 
 			//2. mail request to Ah-Nuts
-			mailcenter.sendOrder(data).then(function(response) {
+			mailcenter.sendOrder(data.mail).then(function(response) {
 
 				console.log('sending ah-nuts email');
 
 				//3. if everything worked mail receipt to customer
-				mailcenter.sendReceipt(data).then(function(response) {
+				mailcenter.sendReceipt(data.mail).then(function(response) {
 
 					console.log('sending customer email');
 					//return success message

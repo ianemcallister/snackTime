@@ -54,6 +54,8 @@ function server($log, $http) {
 	//charge a card
 	backend.chargeCard = function(url, data) {
 
+		$log.info('chargeCard', data);
+
 		return new Promise(function(resolve, reject) {
 
 			backend._post(url, data, {}).then(function(response) {

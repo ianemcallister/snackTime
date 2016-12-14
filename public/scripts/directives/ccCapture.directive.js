@@ -19,10 +19,9 @@ function ccCapture() {
 			productCosts: '=',
 			shippingCosts: '=',
 			isProcessing: '=',
-			customerName: '=',
-			zip: '=',
-			stateId: '=',
-			cityName: '='
+			customerContact: '=',
+			shippingAddress: '=',
+			billingAddress: '='
 		},
 		link: linkFunc,
 		controller: ccCaptureController,
@@ -53,17 +52,42 @@ function ccCapture() {
 			
 			var url = "/charges/charge_card";
 			
+			$log.info('customerContact', vm.customerContact);
+
 			var data = {
-				nonce: nonce,
-				product_id: 1123,//$scope.data.product_id,
-				name: vm.customerName, //'John Smith', //$scope.data.user.name,
-				//email: $scope.data.user.email,         
-				street_address_1: '1234 Main Street', //$scope.data.user.street_address_1,
-				street_address_2: '', //$scope.data.user.street_address_2,
-				city: vm.cityName, //$scope.data.user.city,
-				state: vm.stateId, //$scope.data.user.state,
-				zip: vm.zip //$scope.data.user.zip
+				payment: {
+					nonce: nonce,
+					product_id: 1123,//$scope.data.product_id,
+					name: vm.customerContact.name.first + ' ' + vm.customerContact.name.last, //'John Smith', //$scope.data.user.name,
+					//email: $scope.data.user.email,         
+					street_address_1: vm.billingAddress.street['0'], //$scope.data.user.street_address_1,
+					street_address_2: vm.billingAddress.street['1'], //$scope.data.user.street_address_2,
+					city: vm.billingAddress.city, //$scope.data.user.city,
+					state: vm.billingAddress.state, //$scope.data.user.state,
+					zip: vm.billingAddress.zip //$scope.data.user.zip					
+				},
+				mail: {
+					shipping: {
+						name: {
+							first: vm.customerContact.name.first,
+							last: vm.customerContact.name.last
+						},
+						email: vm.customerContact.email,
+						address: {}
+					},
+					billing: {
+						name: {
+							first: vm.customerContact.name.first,
+							last: vm.customerContact.name.last
+						},
+						email: vm.customerContact.email,
+						address: {}
+					}
+				}
+
 			};
+
+			$log.info('chargeCardWithNonce', data);
 
 			server.chargeCard(url, data).then(function(response) {
 				$log.info('response', response);

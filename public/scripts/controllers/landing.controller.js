@@ -10,21 +10,20 @@ function landingController($scope, $log, $location, $rootScope, dataModel, serve
 	//define view model variable
 	var vm = this;
 	vm.model = dataModel;
-	vm.contactName = '';
 	vm.productCosts = 0;
+	vm.customerContact = {
+		name: vm.model.name,
+		email: vm.model.email
+	}
 
 	//watchers
-	$scope.$watch('vm.model.name.first', function(current, original) {
-		vm.contactName = vm.model.name.first + ' ' + vm.model.name.last;
-	});
-
-	$scope.$watch('vm.model.name.last', function(current, original) {
-		vm.contactName = vm.model.name.first + ' ' + vm.model.name.last;
-	});
-
 	$scope.$watch('vm.model.order.qty', function(current, original) {
 		vm.productCosts = vm.model.order.qty * vm.model.product.price;
 	});
+
+	$scope.$watch('vm.model.email', function(current, original) {
+		vm.customerContact.email = vm.model.email;
+	});	
 
 	$scope.$watch('vm.model.shipping.address.zip', function(current, original) {
 		if(vm.model.copyShippingAddress) vm.model.billing.address.zip = current;

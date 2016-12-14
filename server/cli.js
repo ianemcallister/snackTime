@@ -23,24 +23,16 @@ API.init();
 });*/
 
 var data = {
-				package: 
-					[
-						{
-							service: "EXPRESS",
-							pounds: 0,
-							ounces: 10,
-							zipOrigination: 97005,
-							zipDestination: 97405,
-							size: 'Large',
-							girth: 5,
-							width: 5,
-							length: 5,
-							height: 5
-						}
-					]
-			}
+	
+}
 
-API.postageCalculator(data).then(function(response) {
+/*API.postageCalculator(data).then(function(response) {
+	console.log('response', response);
+}).catch(function(error) {
+	console.log('got this error', error);
+});*/
+
+API.processOrder(data).then(function(response) {
 	console.log('response', response);
 }).catch(function(error) {
 	console.log('got this error', error);
