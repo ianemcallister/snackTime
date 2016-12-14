@@ -35,7 +35,34 @@ function shippingCalculator() {
     function shippingCalculatorController($scope, $log, server) {
 	    var vm = this;
 
-	    //$log.info('vm.serviceClass', vm.serviceClass)
+	    $scope.$watch('vm.serviceClass.isPriority', function(current, original) {
+	    	//$log.info('vm.serviceClass.isPriority', vm.serviceClass.isPriority, vm.serviceClass.express.cost.amount, vm.cost);
+
+	    	if(vm.serviceClass.isPriority == 'true') {
+	    		//$log.info('is priority');
+	    		vm.cost.amount = (vm.serviceClass.priority.cost.amount * 100);
+	    		
+	    	} else {
+	    		//$log.info('is express');
+	    		vm.cost.amount = (vm.serviceClass.express.cost.amount * 100);
+
+	    	}
+
+	    });
+
+	    $scope.$watch('vm.serviceClass.priority.cost.amount', function(current, original) {
+	    	$log.info('vm.serviceClass.isPriority', vm.serviceClass.isPriority, vm.serviceClass.express.cost.amount, vm.cost);
+
+	    	if(vm.serviceClass.isPriority == 'true') {
+	    		//$log.info('is priority');
+	    		vm.cost.amount = (vm.serviceClass.priority.cost.amount * 100);
+	    	} else {
+	    		//$log.info('is express');
+	    		vm.cost.amount = (vm.serviceClass.express.cost.amount * 100);
+	    	}
+
+	    });
+
 	}
 
 	return  directive;
